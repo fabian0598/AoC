@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Day1_Part1_v1 {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		// TODO Auto-generated method stub
-		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/git/AdventofCode/src/Day1/input_day1.txt"))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("src/Day1/input_day1.txt"))) {
 		    int maxValue = 0;
 		    int currentValue = 0;
 			for(String line; (line = br.readLine()) != null; ) {

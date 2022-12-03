@@ -16,7 +16,7 @@ public class Day2_Part2_v2 {
 		mapRPS.put("A", 1);
 		mapRPS.put("B", 2);
 		mapRPS.put("C", 3);
-		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/git/AdventofCode/src/Day2/input_day2.txt"))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("src/Day2/input_day2.txt"))) {
 			for(String line; (line = br.readLine()) != null; ) {
 				String[] parts = line.split(" ");
 				int scenario = mapRPS.get(parts[1]);

@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Day3_Part1_v2 {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		int score = 0;
-		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/git/AdventofCode/src/Day3/input_day3.txt"))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("src/Day3/input_day3.txt"))) {
 			for(String line; (line = br.readLine()) != null; ) {
 				final int mid = line.length() / 2;
 				for(int i = 0; i < mid; i++) {
