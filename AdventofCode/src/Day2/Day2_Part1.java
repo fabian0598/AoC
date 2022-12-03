@@ -16,7 +16,7 @@ public class Day2_Part1 {
 		mapRPS.put("A", 1);
 		mapRPS.put("B", 2);
 		mapRPS.put("C", 3);
-		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/eclipse-workspace/FreeTimeTBD/src/aoc/input_day2.txt"))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/git/AdventofCode/src/Day2/input_day2.txt"))) {
 			for(String line; (line = br.readLine()) != null; ) {
 				String[] parts = line.split(" ");
 				int elf = mapRPS.get(parts[0]);

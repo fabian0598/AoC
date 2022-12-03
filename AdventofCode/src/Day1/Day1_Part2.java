@@ -8,7 +8,7 @@ import java.io.IOException;
 public class Day1_Part2 {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/eclipse-workspace/FreeTimeTBD/src/aoc/input_day1.txt"))) {
+		try(BufferedReader br = new BufferedReader(new FileReader("/Users/Fabian/git/AdventofCode/src/Day1/input_day1.txt"))) {
 			int maxValue1, maxValue2, maxValue3, currentValue;
 			maxValue1 = maxValue2 = maxValue3 = currentValue = 0;
 			for(String line; (line = br.readLine()) != null; ) {
