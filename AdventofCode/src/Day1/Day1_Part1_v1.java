@@ -7,7 +7,6 @@ import java.io.IOException;
 
 public class Day1_Part1_v1 {
 	public static void main(String[] args) throws FileNotFoundException, IOException {
-		// TODO Auto-generated method stub
 		try(BufferedReader br = new BufferedReader(new FileReader("src/Day1/input_day1.txt"))) {
 		    int maxValue = 0;
 		    int currentValue = 0;
@@ -20,13 +19,11 @@ public class Day1_Part1_v1 {
 		        } else {
 		        	currentValue += Integer.valueOf(line);
 		        }
-//				System.out.println(maxElf);
 		    }
 			if (currentValue > maxValue) {
         		maxValue = currentValue;
         	}
 			System.out.println(maxValue);
-		    // line is not visible here.
 		}
 	}
 
