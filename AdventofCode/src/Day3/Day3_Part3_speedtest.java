@@ -15,7 +15,6 @@ public class Day3_Part3_speedtest {
 		Integer count = 0;
 		try(BufferedReader br = new BufferedReader(new FileReader("src/Day3/input_day3.txt"))) {
 			String line1, line2, line3;
-			String lineI, lineJ, lineK;
 			while((line1 = br.readLine()) != null 
 					&& (line2 = br.readLine()) != null
 					&& (line3 = br.readLine()) != null)
