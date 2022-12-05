@@ -40,12 +40,9 @@ public class Day5_Part1 {
 		// Move according to schedule
 		for(int i = 10; i < lineSplit.length; i++) {
 			String[] split = lineSplit[i].split(" ");
-			for(int j = 0; j < Integer.valueOf(split[1]); j++) {
-				Stack<String> from = containers.get(Integer.valueOf(split[3])-1); // Find container from which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
-				Stack<String> to = containers.get(Integer.valueOf(split[5])-1); // Find container to which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
-				to.push(from.peek());
-				from.pop();
-			}
+			Stack<String> from = containers.get(Integer.valueOf(split[3])-1); // Find container from which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
+			Stack<String> to = containers.get(Integer.valueOf(split[5])-1); // Find container to which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
+			for(int j = 0; j < Integer.valueOf(split[1]); j++) to.push(from.pop());
 		}
 		
 		// Print final result

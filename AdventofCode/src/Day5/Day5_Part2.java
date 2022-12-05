@@ -43,15 +43,8 @@ public class Day5_Part2 {
 			Stack<String> move = new Stack<String>(); // Temporary stack which will be moved in one piece, loading into separate stack and back will ensure the same order on the stack into which the boxes will be transferred
 			Stack<String> from = containers.get(Integer.valueOf(split[3])-1); // Find container from which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
 			Stack<String> to = containers.get(Integer.valueOf(split[5])-1); // Find container to which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
-			for(int j = 0; j < Integer.valueOf(split[1]); j++) {
-				move.push(from.peek());
-				from.pop();
-			}
-			while (move.size() != 0) {
-	            to.push(move.peek());
-	            move.pop();
-	        }
-	
+			for(int j = 0; j < Integer.valueOf(split[1]); j++) move.push(from.pop()); // Move boxes into move stack
+			while (move.size() != 0) to.push(move.pop()); // Empty move stack into destination stack
 		}
 		
 		// Print final result
