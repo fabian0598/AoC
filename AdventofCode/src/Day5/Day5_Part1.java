@@ -14,7 +14,7 @@ public class Day5_Part1 {
 	@SuppressWarnings({ "resource" })
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		// Read input
+		// Read input, first day in which I am not using a buffered reader
 		String s = new String((new FileInputStream("src/Day5/input_day5.txt")).readAllBytes(), StandardCharsets.UTF_8);
 		String[] lineSplit = s.split("\n");
 
@@ -41,8 +41,8 @@ public class Day5_Part1 {
 		for(int i = 10; i < lineSplit.length; i++) {
 			String[] split = lineSplit[i].split(" ");
 			for(int j = 0; j < Integer.valueOf(split[1]); j++) {
-				Stack<String> from = containers.get(Integer.valueOf(split[3])-1);
-				Stack<String> to = containers.get(Integer.valueOf(split[5])-1);
+				Stack<String> from = containers.get(Integer.valueOf(split[3])-1); // Find container from which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
+				Stack<String> to = containers.get(Integer.valueOf(split[5])-1); // Find container to which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
 				to.push(from.peek());
 				from.pop();
 			}

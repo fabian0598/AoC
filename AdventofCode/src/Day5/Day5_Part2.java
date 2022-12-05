@@ -11,10 +11,10 @@ import java.util.stream.IntStream;
 
 public class Day5_Part2 {
 
-	@SuppressWarnings({ "resource" })
 	public static void main(String[] args) throws FileNotFoundException, IOException {
 		
-		// Read input
+		// Read input, first day in which I am not using a buffered reader
+		@SuppressWarnings("resource")
 		String s = new String((new FileInputStream("src/Day5/input_day5.txt")).readAllBytes(), StandardCharsets.UTF_8);
 		String[] lineSplit = s.split("\n");
 
@@ -25,7 +25,7 @@ public class Day5_Part2 {
 		
 		// Read in stacks bottom up
 		for(int i = 7; i >= 0; i--) {
-			lineSplit[i] += " "; // Add space to make each container regular
+			lineSplit[i] += " "; // Add space to make each String regular
 			for(int j = 0; j < numberStacks; j++) {	
 				int charPos = j*4;
 				String subString = lineSplit[i].substring(charPos, charPos+3);
@@ -40,9 +40,9 @@ public class Day5_Part2 {
 		// Move according to schedule
 		for(int i = 10; i < lineSplit.length; i++) {
 			String[] split = lineSplit[i].split(" ");
-			Stack<String> move = new Stack<String>();
-			Stack<String> from = containers.get(Integer.valueOf(split[3])-1);
-			Stack<String> to = containers.get(Integer.valueOf(split[5])-1);
+			Stack<String> move = new Stack<String>(); // Temporary stack which will be moved in one piece, loading into separate stack and back will ensure the same order on the stack into which the boxes will be transferred
+			Stack<String> from = containers.get(Integer.valueOf(split[3])-1); // Find container from which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
+			Stack<String> to = containers.get(Integer.valueOf(split[5])-1); // Find container to which boxes will be unloaded, -1 because transposing 1-9 to 0-8 (Java indexes)
 			for(int j = 0; j < Integer.valueOf(split[1]); j++) {
 				move.push(from.peek());
 				from.pop();
