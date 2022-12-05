@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -15,16 +15,11 @@ public class Day3_Part3_speedtest {
 		Integer count = 0;
 		try(BufferedReader br = new BufferedReader(new FileReader("src/Day3/input_day3.txt"))) {
 			String line1, line2, line3;
-			while((line1 = br.readLine()) != null 
-					&& (line2 = br.readLine()) != null
-					&& (line3 = br.readLine()) != null)
+			while((line1 = br.readLine()) != null && (line2 = br.readLine()) != null && (line3 = br.readLine()) != null)
 			{
-				List<String> lines = new ArrayList<String>();
-				lines.add(line1);
-				lines.add(line2);
-				lines.add(line3);
+				List<String> lines = Arrays.asList(line1, line2, line3);
 				
-				Collections.sort(lines, Comparator.comparing(String::length)); // SOrt
+				Collections.sort(lines, Comparator.comparing(String::length)); // Sort
 				Collections.reverse(lines); // Reverse
 				
 				// Drop first and attach at the end again
@@ -37,7 +32,7 @@ public class Day3_Part3_speedtest {
 //				Collections.shuffle(lines);
 				
 				// Length print
-				for (String i: lines) System.out.println(i.length());
+//				for (String i: lines) System.out.println(i.length());
 				
 				for(int i = 0; i < lines.get(0).length(); i++) {
 					for(int j = 0; j < lines.get(1).length(); j++) {

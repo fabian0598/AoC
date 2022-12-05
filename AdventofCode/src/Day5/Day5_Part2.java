@@ -19,41 +19,64 @@ public class Day5_Part2 {
 		String[] lineSplit = s.split("\n");
 
 		// Set up stacks
+		int numberStacks = 9;
 		List<Stack<String>> containers = new ArrayList<Stack<String>>();
-		IntStream.range(0, 9).forEach(i -> containers.add(new Stack<String>()));
+		IntStream.range(0, numberStacks).forEach(i -> containers.add(new Stack<String>()));
 		
+		// Read in stacks bottom up
 		for(int i = 7; i >= 0; i--) {
-			int j = 0;
-			int k = 0;
 			lineSplit[i] += " "; // Add space to make each container regular
-			while(j < lineSplit[i].length()) {	
-				String subString = lineSplit[i].substring(j, j+3);
-				j += 4;
-				if(!subString.equals("   ")) containers.get(k).add(subString);
-				k++;
+			for(int j = 0; j < numberStacks; j++) {	
+				int charPos = j*4;
+				String subString = lineSplit[i].substring(charPos, charPos+3);
+				if(!subString.equals("   ")) containers.get(j).add(subString);
 			}
 		}
 		
+		// Print initial set-up
+		System.out.println("\nInitial Set-up");
 		containers.forEach(System.out::println);
-		System.out.println("\n");
 		
+		// Move according to schedule
 		for(int i = 10; i < lineSplit.length; i++) {
 			String[] split = lineSplit[i].split(" ");
-			Stack<String> temp = new Stack<String>();
+			Stack<String> move = new Stack<String>();
 			Stack<String> from = containers.get(Integer.valueOf(split[3])-1);
 			Stack<String> to = containers.get(Integer.valueOf(split[5])-1);
 			for(int j = 0; j < Integer.valueOf(split[1]); j++) {
-				temp.push(from.peek());
+				move.push(from.peek());
 				from.pop();
 			}
-			while (temp.size() != 0) {
-	            to.push(temp.peek());
-	            temp.pop();
+			while (move.size() != 0) {
+	            to.push(move.peek());
+	            move.pop();
 	        }
+	
 		}
 		
+		// Print final result
+		System.out.println("\nFinal result");
 		containers.forEach(System.out::println);
-		containers.forEach(i -> System.out.print(i.peek().charAt(1)));
+		
+		System.out.println("\nTop elements as String");
+		containers.forEach(i -> System.out.print(i.peek().charAt(1))); //PGSQBFLDP
+		
+//		System.out.println("\nTest stuff");
+//		Stack<String> test1 = new Stack<String>();
+//		test1.add("1");
+//		test1.add("2");
+//		
+//		test1.forEach(System.out::println);
+//		
+//		Stack<String> test2 = new Stack<String>();
+//		test2.add("3");
+//		test2.add("4");
+//		
+//		test1.addAll(test2);
+//		
+//		test1.forEach(System.out::println);
+		
+		
 	}
 
 }

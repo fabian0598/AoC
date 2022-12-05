@@ -19,36 +19,41 @@ public class Day5_Part1 {
 		String[] lineSplit = s.split("\n");
 
 		// Set up stacks
+		int numberStacks = 9;
 		List<Stack<String>> containers = new ArrayList<Stack<String>>();
-		IntStream.range(0, 9).forEach(i -> containers.add(new Stack<String>()));
+		IntStream.range(0, numberStacks).forEach(i -> containers.add(new Stack<String>()));
 		
+		// Read in stacks bottom up
 		for(int i = 7; i >= 0; i--) {
-			int j = 0;
-			int k = 0;
 			lineSplit[i] += " "; // Add space to make each container regular
-			while(j < lineSplit[i].length()) {	
-				String subString = lineSplit[i].substring(j, j+3);
-				j += 4;
-				if(!subString.equals("   ")) containers.get(k).add(subString);
-				k++;
+			for(int j = 0; j < numberStacks; j++) {	
+				int charPos = j*4;
+				String subString = lineSplit[i].substring(charPos, charPos+3);
+				if(!subString.equals("   ")) containers.get(j).add(subString);
 			}
 		}
 		
+		// Print initial set-up
+		System.out.println("\nInitial Set-up");
 		containers.forEach(System.out::println);
-		System.out.println("\n");
 		
+		// Move according to schedule
 		for(int i = 10; i < lineSplit.length; i++) {
 			String[] split = lineSplit[i].split(" ");
 			for(int j = 0; j < Integer.valueOf(split[1]); j++) {
 				Stack<String> from = containers.get(Integer.valueOf(split[3])-1);
 				Stack<String> to = containers.get(Integer.valueOf(split[5])-1);
-				to.add(from.peek());
+				to.push(from.peek());
 				from.pop();
 			}
 		}
 		
+		// Print final result
+		System.out.println("\nFinal result");
 		containers.forEach(System.out::println);
-		containers.forEach(i -> System.out.print(i.peek().charAt(1)));
+		
+		System.out.println("\nTop elements as String");
+		containers.forEach(i -> System.out.print(i.peek().charAt(1))); //BSDMQFLSP
 	}
 
 }
