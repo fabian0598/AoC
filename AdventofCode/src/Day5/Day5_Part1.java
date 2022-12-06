@@ -50,7 +50,7 @@ public class Day5_Part1 {
 		containers.forEach(System.out::println);
 		
 		System.out.println("\nTop elements as String");
-		containers.forEach(i -> System.out.print(i.peek().charAt(1))); //BSDMQFLSP
+		containers.forEach(i -> System.out.print(i.peek().charAt(1))); // BSDMQFLSP
 	}
 
 }
