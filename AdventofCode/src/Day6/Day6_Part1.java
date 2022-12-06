@@ -13,14 +13,13 @@ public class Day6_Part1 {
 
 		// Read input, first day in which I am not using a buffered reader
 		String s = new String((new FileInputStream("src/Day6/input_day6.txt")).readAllBytes(), StandardCharsets.UTF_8);
-
-		int i = 0;
-		while(true) {
-			if(hasAllUniqueChars(s.substring(i, i + 4))) {
-				System.out.println(i + 4);
+		int length = 4;
+		
+		for(int i = 0; true; i++) {
+			if(hasAllUniqueChars(s.substring(i, i + length))) {
+				System.out.println(i + length); // 1275
 				break;
 			}
-			i++;
 		}
 	}
 
@@ -29,8 +28,7 @@ public class Day6_Part1 {
 		for(int index = 0; index < word.length(); index++)   {
 			char c = word.charAt(index);
 			// If Hashset's add method return false,that means it is already present in HashSet
-			if(!set.add(c))
-				return false;
+			if(!set.add(c)) return false;
 		}
 		return true;
 	}

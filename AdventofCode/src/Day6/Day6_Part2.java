@@ -13,11 +13,12 @@ public class Day6_Part2 {
 
 		// Read input, first day in which I am not using a buffered reader
 		String s = new String((new FileInputStream("src/Day6/input_day6.txt")).readAllBytes(), StandardCharsets.UTF_8);
-
+		int length = 14;
+		
 		int i = 0;
 		while(true) {
-			if(hasAllUniqueChars(s.substring(i, i + 14))) {
-				System.out.println(i + 14);
+			if(hasAllUniqueChars(s.substring(i, i + length))) {
+				System.out.println(i + length); // 3605
 				break;
 			}
 			i++;
