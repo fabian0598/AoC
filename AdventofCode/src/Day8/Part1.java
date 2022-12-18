@@ -2,7 +2,6 @@ package Day8;
 
 import java.io.FileInputStream;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 
 public class Part1 {
 
