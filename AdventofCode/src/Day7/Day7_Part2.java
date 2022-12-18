@@ -18,7 +18,6 @@ public class Day7_Part2 {
 		Directory pointer;
 		Directory main = new Directory();
 		pointer = main;
-		int dirCount = 1;
 		ArrayList<Directory> all = new ArrayList<Directory>();
 		all.add(main);
 		
@@ -37,22 +36,10 @@ public class Day7_Part2 {
 				Directory dirNew = new Directory(lineParts[1], pointer);
 				pointer.add(dirNew);
 				all.add(dirNew);
-				dirCount++;
 			}
 			else pointer.addFile(lineParts[1], Integer.valueOf(lineParts[0]));
 		}
 		
-		// Find directories over size x
-//		int threshold = 1000;
-//		int count = 0;
-//		
-//		System.out.println(Global.overLimit.size());
-//		System.out.println(dirCount);
-//		System.out.println(main.getSize());
-//		System.out.println(main.get(0).get(0).getSize());
-		
-		//System.out.println(all.size());
-
 		int minSizeDir = 30000000 - 70000000 + main.getSize();
 		Directory smallPoss = main;
 		
@@ -69,16 +56,4 @@ public class Day7_Part2 {
 		System.out.println(smallPoss.getSize());
 		
 	}
-	
-//	public void crawl(ArrayList<Directory> daugthers, int count, int threshold) {
-//		for(int i = 0; i < daugthers.size(); i++) {
-//			if(daugthers.get(i).getSize() > threshold) {
-//				count++;
-//			}
-//			ArrayList<Directory> grandChilds = daugthers.get(i).get();
-//			if(grandChilds != null) crawl(grandChilds, count);
-//		}
-//	}
-
-
 }
